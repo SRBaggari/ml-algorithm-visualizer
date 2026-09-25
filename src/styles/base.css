@@ -1,0 +1,336 @@
+/* ============ Design tokens ============ */
+:root {
+  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f2f4f6;
+  --surface-3: #e8ebee;
+  --border: #e2e5e9;
+  --border-strong: #cdd2d8;
+  --text: #0f1216;
+  --text-2: #3b4149;
+  --text-muted: #69707a;
+
+  --primary: #111418;
+  --primary-hover: #2a2f36;
+  --primary-contrast: #ffffff;
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.1);
+  --success: #16a34a;
+  --success-soft: rgba(22, 163, 74, 0.1);
+  --warn: #d97706;
+  --warn-soft: rgba(217, 119, 6, 0.12);
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.1);
+
+  /* Data series (categorical) */
+  --s1: #2f7de1;
+  --s2: #e8890c;
+  --s3: #14a37f;
+  --s4: #8b5cf6;
+  --s5: #e0474c;
+  --s6: #d9468f;
+  --point-neutral: #a3a9b1;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 4px 14px rgba(16, 24, 40, 0.05);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.14);
+  --ring: 0 0 0 3px rgba(79, 70, 229, 0.35);
+  --sidebar-w: 256px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0d10;
+  --surface: #13161a;
+  --surface-2: #1a1e23;
+  --surface-3: #22272d;
+  --border: #252a31;
+  --border-strong: #343a42;
+  --text: #eef0f3;
+  --text-2: #c4c9d0;
+  --text-muted: #8c939d;
+
+  --primary: #f1f3f5;
+  --primary-hover: #d9dde2;
+  --primary-contrast: #0b0d10;
+  --accent: #8b8cf8;
+  --accent-soft: rgba(139, 140, 248, 0.14);
+  --success: #34c67a;
+  --success-soft: rgba(52, 198, 122, 0.14);
+  --warn: #f5a524;
+  --warn-soft: rgba(245, 165, 36, 0.14);
+  --danger: #f26b6b;
+  --danger-soft: rgba(242, 107, 107, 0.14);
+
+  --s1: #5aa2f5;
+  --s2: #f5a524;
+  --s3: #34c69b;
+  --s4: #a88bfa;
+  --s5: #f26b6b;
+  --s6: #f07ab4;
+  --point-neutral: #6c737d;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.35), 0 6px 18px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --ring: 0 0 0 3px rgba(139, 140, 248, 0.45);
+  color-scheme: dark;
+}
+
+/* ============ Reset & base ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 650;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem);
+}
+
+h2 {
+  font-size: 1.05rem;
+}
+
+h3 {
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0 0 0.6em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 6px;
+}
+
+svg :focus-visible {
+  box-shadow: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* ============ Utilities ============ */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 550;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.6rem 0 0;
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 0.87rem;
+  margin: 0.5rem 0 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dot--ok {
+  background: var(--success);
+  box-shadow: 0 0 0 3px var(--success-soft);
+}
+
+/* ============ Motion ============ */
+/* Only a "from" frame: elements settle at their own CSS opacity (e.g. faint lines). */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flash {
+  0% {
+    background: var(--accent-soft);
+    box-shadow: inset 0 0 0 2px var(--accent);
+  }
+  100% {
+    background: var(--accent-soft);
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.45s var(--ease) both;
+}
+
+/* Respect the OS "reduce motion" setting everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}

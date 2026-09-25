@@ -1,0 +1,9 @@
+node_modules
+dist
+*.log
+.DS_Store
+.vite
+
+# Local environment files (the app needs none - never commit secrets)
+.env
+.env.*
