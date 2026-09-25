@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn Machine Learning algorithms through interactive visualizations." />
+    <title>ML Algorithm Visualizer</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var t = JSON.parse(localStorage.getItem('mlviz:theme'));
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="./assets/index-BDG_rPuJ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/react-B5x2XjeN.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-B1LUD2eE.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
