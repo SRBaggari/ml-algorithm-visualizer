@@ -6,6 +6,8 @@ ML Algorithm Visualizer is a **frontend-only educational ML visualization platfo
 
 > **This project does not require a backend, database, or API keys. All processing is performed locally in the browser.**
 
+**Live demo:** https://srbaggari.github.io/ml-algorithm-visualizer/
+
 ![Dashboard](docs/screenshots/dashboard.png)
 
 ---
@@ -178,6 +180,10 @@ npm run preview   # serve the production build locally
 ```
 
 The production build uses relative paths and hash routing, so the `dist/` folder can be deployed to any static host (GitHub Pages, Netlify, Vercel, S3, …) without server configuration.
+
+### Deployment
+
+The live site is hosted on **GitHub Pages**. On every push to `main`, the [`deploy` workflow](.github/workflows/deploy.yml) installs dependencies, runs the unit tests, builds the app and publishes `dist/` to the `gh-pages` branch, which GitHub Pages serves. If the tests fail, nothing is deployed.
 
 ## Offline Architecture
 
